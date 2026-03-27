@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fullstack Roadmap Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #111110;
+      color: #e5e5e0;
+    }
+
+    .card {
+      background: #1a1a19;
+      border: 1px solid #262624;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: #40403d;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .tab-btn {
+      color: #8a8a85;
+      border: 1px solid transparent;
+    }
+
+    .tab-btn.active {
+      background: #1a1a19;
+      border-color: #262624;
+      color: #a78bfa;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    code {
+      font-family: 'JetBrains Mono', 'Menlo', monospace;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-3xl mx-auto">
+    <header class="text-center mb-8">
+      <h1 class="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-2">
+        Fullstack Roadmap Guide
+      </h1>
+      <p class="text-gray-400 text-base max-w-xl mx-auto">A practical, opinionated roadmap from someone who's been
+        through it. No fluff, just what actually works.</p>
+    </header>
+
+    <nav class="flex flex-wrap justify-center gap-1 mb-8 p-1 bg-[#1a1a19]/50 rounded-xl border border-[#262624]">
+      <button onclick="show('react')"
+        class="tab-btn active px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:text-white">React</button>
+      <button onclick="show('backend')"
+        class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:text-white">Backend</button>
+      <button onclick="show('hosting')"
+        class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:text-white">Hosting</button>
+      <button onclick="show('ai')"
+        class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:text-white">AI &
+        Tools</button>
+      <button onclick="show('git')"
+        class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:text-white">Git &
+        DB</button>
+      <button onclick="show('projects')"
+        class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:text-white">
+        Projects</button>
+    </nav>
+
+    <!-- REACT -->
+    <main id="content">
+      <div class="section active" id="s-react">
+        <!-- Core Stack Overview -->
+        <div class="card rounded-2xl p-6 mb-4 border-purple-500/20 bg-gradient-to-br from-[#1a1a19] to-[#141413]">
+          <h3 class="text-xs font-semibold text-purple-400 uppercase tracking-widest mb-4">Core Tech Stack</h3>
+          <div class="flex flex-wrap gap-3">
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
+              <span class="text-sm font-medium text-gray-200">Zustand</span>
+            </div>
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
+              <span class="text-sm font-medium text-gray-200">Axios</span>
+            </div>
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
+              <span class="text-sm font-medium text-gray-200">shadcn/ui</span>
+            </div>
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
+              <span class="text-sm font-medium text-gray-200">Zod</span>
+            </div>
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
+              <span class="text-sm font-medium text-gray-200">Drizzle</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mindset -->
+        <div class="card rounded-2xl p-6 mb-4 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+          <div class="flex items-center gap-3 mb-6">
+            <h2 class="text-xl font-semibold text-white">React Mindset</h2>
+            <span class="px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-300 border-purple-500/20">start
+              here</span>
+          </div>
+          <div class="space-y-2">
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-purple-500 shadow-[0_0_15px_rgba(167,139,250,0.3)]"></div>
+              <p class="text-gray-300 leading-relaxed">Start with <strong class="text-purple-400">TypeScript right
+                  away</strong> — no worries if it feels strict at first, it's the only way to build reliable apps in
+                2026.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-purple-500"></div>
+              <p class="text-gray-300 leading-relaxed">Learn <strong class="text-gray-100">React itself</strong> —
+                components, props, state, and JSX. That's your foundation.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-purple-500"></div>
+              <p class="text-gray-300 leading-relaxed"><strong class="text-gray-100">Skip design patterns</strong>
+                (MVC, Observer, Factory, etc.) — they are useless at this stage. Focus on building things, not
+                architecture theory.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-purple-500"></div>
+              <p class="text-gray-300 leading-relaxed">Always think about <strong class="text-gray-100">making
+                  reusable components</strong> — if you write a button in two places, extract it into a shared component
+                that accepts props.</p>
+            </div>
+          </div>
+          <div
+            class="mt-6 p-4 rounded-2xl bg-blue-500/5 border border-blue-500/10 text-sm text-gray-400 leading-relaxed">
+            <span class="text-blue-400 font-medium block mb-1">💡 Keep it simple</span>
+            Don't over-engineer. Build first, refactor later when you actually see repeated patterns.
+          </div>
+        </div>
+
+        <!-- Component Philosophy -->
+        <div class="card rounded-2xl p-6 mb-4 relative overflow-hidden">
+          <div class="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl -ml-16 -mb-16"></div>
+          <div class="flex items-center gap-3 mb-6">
+            <h2 class="text-xl font-semibold text-white">Component Philosophy</h2>
+            <span class="px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-300 border-indigo-500/20">core
+              rule</span>
+          </div>
+          <div class="space-y-2">
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-indigo-500"></div>
+              <p class="text-gray-300 leading-relaxed"><strong class="text-gray-100">Dumb components</strong> = no
+                logic inside them. They receive props (params) and render UI. That's it.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-indigo-500"></div>
+              <p class="text-gray-300 leading-relaxed"><strong class="text-gray-100">Parent holds the logic.</strong>
+                The parent page/component handles state, data fetching, and event handlers — then passes everything down
+                as props.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-indigo-500"></div>
+              <p class="text-gray-300 leading-relaxed">Think <strong class="text-gray-100">reusable first</strong> — a
+                component that accepts <code
+                  class="bg-white/10 px-1.5 py-0.5 rounded text-sm text-indigo-600">props</code> can be used anywhere.
+                Write once, use everywhere.</p>
+            </div>
+          </div>
+          <div class="mt-6 p-2 bg-black/20 border border-white/5">
+            <div class="text-gray-400 mb-1">// ✅ Dumb component — no logic, only props</div>
+            <div><span class="text-purple-600">function</span> <span class="text-blue-600">ProductCard</span>({ title,
+              price, onBuy }) {</div>
+            <div class="ml-4"><span class="text-purple-600">return</span> (</div>
+            <div class="ml-8">&lt;<span class="text-blue-600">div</span>&gt;</div>
+            <div class="ml-12">&lt;<span class="text-blue-600">h3</span>&gt;{title}&lt;/<span
+                class="text-blue-600">h3</span>&gt;</div>
+            <div class="ml-12">&lt;<span class="text-blue-600">p</span>&gt;{price}&lt;/<span
+                class="text-blue-600">p</span>&gt;</div>
+            <div class="ml-12">&lt;<span class="text-blue-600">button</span> <span
+                class="text-amber-600">onClick</span>={onBuy}&gt;Buy&lt;/<span class="text-blue-600">button</span>&gt;
+            </div>
+            <div class="ml-8">&lt;/<span class="text-blue-600">div</span>&gt;</div>
+            <div class="ml-4">);</div>
+            <div>}</div>
+            <div class="text-gray-400 mt-3 mb-1">// ✅ Parent holds all the logic</div>
+            <div><span class="text-purple-600">function</span> <span class="text-blue-600">StorePage</span>() {</div>
+            <div class="ml-4"><span class="text-purple-600">const</span> [products] = <span
+                class="text-amber-600">useState</span>([...]);</div>
+            <div class="ml-4"><span class="text-purple-600">const</span> handleBuy = (id) =&gt; { <span
+                class="text-gray-400">/* logic here */</span> };</div>
+            <div class="ml-4"><span class="text-purple-600">return</span> products.<span
+                class="text-amber-600">map</span>(p =&gt;</div>
+            <div class="ml-8">&lt;<span class="text-blue-600">ProductCard</span> <span
+                class="text-amber-600">title</span>={p.title} <span class="text-amber-600">price</span>={p.price} <span
+                class="text-amber-600">onBuy</span>={() =&gt; handleBuy(p.id)} /&gt;</div>
+            <div class="ml-4">);</div>
+            <div>}</div>
+          </div>
+        </div>
+
+        <!-- Hooks Warning -->
+        <div class="card rounded-2xl p-6 mb-4 relative overflow-hidden">
+          <div class="flex items-center gap-3 mb-6">
+            <h2 class="text-xl font-semibold text-white">Hooks — Don't Overdo It</h2>
+            <span class="px-2.5 py-1 rounded-full bg-rose-500/10 text-rose-300 border-rose-500/20">⚠
+              warning</span>
+          </div>
+          <div class="space-y-2">
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-rose-500"></div>
+              <p class="text-gray-300 leading-relaxed"><strong class="text-gray-100">Don't abuse <code
+                    class="bg-white/10 px-1.5 py-0.5 rounded text-sm text-rose-600">useHooks</code></strong> —
+                extracting everything into custom hooks makes code harder to read and chaotic to debug.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-rose-500"></div>
+              <p class="text-gray-300 leading-relaxed">If the logic is <strong class="text-gray-100">only used in one
+                  page</strong>, just write it directly inside that page component. No need to extract it.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-rose-500"></div>
+              <p class="text-gray-300 leading-relaxed">Only create a custom hook when the <strong
+                  class="text-gray-100">exact same logic</strong> is genuinely reused in multiple places.</p>
+            </div>
+          </div>
+          <div
+            class="mt-6 p-4 rounded-2xl bg-rose-500/5 border border-rose-500/10 text-sm text-gray-400 leading-relaxed">
+            <span class="text-rose-400 font-medium block mb-1">⚠ Anti-pattern</span>
+            Creating <code class="bg-white/10 px-1 py-0.5 rounded text-rose-600">useFormInput</code>, <code
+              class="bg-white/10 px-1 py-0.5 rounded text-rose-600">useToggle</code>, <code
+              class="bg-white/10 px-1 py-0.5 rounded text-rose-600">useLocalStorage</code> for one-off logic just adds
+            indirection. Keep it simple — write it inline.
+          </div>
+        </div>
+
+        <!-- State Management & UI Styling -->
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div class="card rounded-2xl p-6">
+            <h3 class="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+              <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4">
+                </path>
+              </svg>
+              State Management
+            </h3>
+            <div class="space-y-2">
+              <div class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+                <span class="text-gray-400">Local state</span>
+                <span class="text-blue-400 font-medium font-mono text-sm">useState</span>
+              </div>
+              <div class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+                <span class="text-gray-400">Simple shared data</span>
+                <span class="text-blue-400 font-medium font-mono text-sm">Context API</span>
+              </div>
+              <div class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5 ring-1 ring-blue-500/30">
+                <span class="text-gray-300 font-medium">Shared across pages</span>
+                <span class="text-blue-400 font-bold font-mono text-sm">Zustand ✓</span>
+              </div>
+              <div class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5 opacity-40">
+                <span class="text-gray-400 line-through">Over-complicated</span>
+                <span class="text-red-400 font-medium font-mono text-sm line-through">Redux ✗</span>
+              </div>
+            </div>
+            <div
+              class="mt-6 p-4 rounded-2xl bg-blue-500/5 border border-blue-500/10 text-sm text-gray-400 leading-relaxed">
+              <span class="text-blue-400 font-medium block mb-1">💡 When to pick what</span>
+              <strong class="text-gray-300">Context API</strong> works for small shared data (theme, locale) but gets
+              <strong class="text-slate-200">limited fast</strong> — it re-renders everything. Once you have many pages
+              sharing data, use <strong class="text-slate-200">Zustand</strong>: tiny, zero boilerplate, and actually
+              scales. <strong class="text-red-400">Redux is over-complicated</strong> — don't waste your time on it.
+            </div>
+          </div>
+
+          <div class="card rounded-2xl p-6">
+            <h3 class="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+              <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.172-1.172a4 4 0 115.656 5.656L10 17.657">
+                </path>
+              </svg>
+              UI & Styling
+            </h3>
+            <div class="space-y-2">
+              <div
+                class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5 ring-1 ring-purple-500/30">
+                <span class="text-gray-300 font-medium">UI Components</span>
+                <span class="text-purple-600 font-bold font-mono text-sm">shadcn/ui ✓</span>
+              </div>
+              <div class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+                <span class="text-gray-400">Under the hood</span>
+                <span class="text-purple-600 font-medium font-mono text-sm">Tailwind</span>
+              </div>
+              <div class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+                <span class="text-gray-400">Next step</span>
+                <span class="text-purple-600 font-medium font-mono text-sm">Next.js</span>
+              </div>
+            </div>
+            <div
+              class="mt-6 p-4 rounded-2xl bg-purple-500/5 border border-purple-500/10 text-sm text-gray-400 leading-relaxed">
+              <span class="text-purple-600 font-medium block mb-1">💡 Don't learn Tailwind separately</span>
+              <strong class="text-slate-200">shadcn/ui</strong> handles Tailwind internally — you get beautiful,
+              accessible components out of the box. <strong class="text-gray-300">Don't try to memorise Tailwind
+                utility classes</strong>, it's not necessary anymore. Just use shadcn and customise when needed.
+            </div>
+          </div>
+        </div>
+
+        <!-- API Layer -->
+        <div class="card rounded-2xl p-6 mb-4">
+          <div class="flex items-center gap-3 mb-6">
+            <h2 class="text-xl font-semibold text-white">API Layer — Write once, use everywhere</h2>
+            <span
+              class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border-emerald-500/20">pattern</span>
+          </div>
+          <div class="space-y-2">
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+              <p class="text-gray-300 leading-relaxed">Use <strong class="text-gray-100">Axios</strong> for all API
+                calls. Create <strong class="text-gray-100">one wrapper function</strong> (e.g. <code
+                  class="bg-white/10 px-1.5 py-0.5 rounded text-sm text-emerald-600">api.ts</code>) that handles
+                everything.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+              <p class="text-gray-300 leading-relaxed">Inside the wrapper: read the <code
+                  class="bg-white/10 px-1.5 py-0.5 rounded text-sm text-emerald-600">Bearer token</code> from <code
+                  class="bg-white/10 px-1.5 py-0.5 rounded text-sm text-emerald-600">localStorage</code> and attach it
+                to every request automatically. Write once, every request is authenticated.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+              <p class="text-gray-300 leading-relaxed">Every API call in your app goes through this function — <strong
+                  class="text-gray-100">never</strong> raw <code
+                  class="bg-white/10 px-1.5 py-0.5 rounded text-sm text-emerald-600">fetch()</code> or <code
+                  class="bg-white/10 px-1.5 py-0.5 rounded text-sm text-emerald-600">axios.get()</code> directly in
+                components.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+              <p class="text-gray-300 leading-relaxed">Save the bearer token in <code
+                  class="bg-white/10 px-1.5 py-0.5 rounded text-sm text-emerald-600">localStorage</code> after login:
+                <code
+                  class="bg-white/10 px-1.5 py-0.5 rounded text-sm text-emerald-600">localStorage.setItem('token', ...)</code>.
+                Done.
+              </p>
+            </div>
+          </div>
+          <div class="mt-6 p-2 bg-black/20 border border-white/5">
+            <div class="text-gray-400 mb-1">// lib/api.ts — write once, use everywhere</div>
+            <div><span class="text-purple-600">import</span> axios <span class="text-purple-600">from</span> <span
+                class="text-amber-600">'axios'</span>;</div>
+            <div class="mt-2"><span class="text-purple-600">const</span> api = axios.<span
+                class="text-amber-600">create</span>({</div>
+            <div class="ml-4">baseURL: <span class="text-amber-600">'https://your-api.com'</span>,</div>
+            <div>});</div>
+            <div class="mt-2"><span class="text-gray-400">// Auto-attach Bearer token to every request</span></div>
+            <div>api.interceptors.request.<span class="text-amber-600">use</span>((config) =&gt; {</div>
+            <div class="ml-4"><span class="text-purple-600">const</span> token = localStorage.<span
+                class="text-amber-600">getItem</span>(<span class="text-amber-600">'token'</span>);</div>
+            <div class="ml-4"><span class="text-purple-600">if</span> (token) config.headers.Authorization = <span
+                class="text-amber-600">`Bearer ${</span>token<span class="text-amber-600">}`</span>;</div>
+            <div class="ml-4"><span class="text-purple-600">return</span> config;</div>
+            <div>});</div>
+            <div class="mt-2"><span class="text-purple-600">export default</span> api;</div>
+            <div class="mt-3 text-gray-400">// Usage anywhere: api.get('/users'), api.post('/orders', data)</div>
+          </div>
+        </div>
+
+        <!-- Next.js -->
+        <div class="card rounded-2xl p-6 mb-4">
+          <div class="flex items-center gap-3 mb-6">
+            <h2 class="text-xl font-semibold text-white">Next.js — When you're comfortable with React</h2>
+            <span class="px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-300 border-amber-500/20">next
+              level</span>
+          </div>
+          <div class="space-y-2">
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-amber-500"></div>
+              <p class="text-gray-300 leading-relaxed">Once you're comfortable with React + everything mentioned above
+                → move to <strong class="text-gray-100">Next.js</strong>. You need it to learn <strong
+                  class="text-gray-100">database setup</strong> and <strong class="text-gray-100">middleware</strong>.
+              </p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-amber-500"></div>
+              <p class="text-gray-300 leading-relaxed">Database ORM: use <strong class="text-gray-100">Drizzle</strong>
+                — it's better than Prisma (lighter, faster, SQL-like syntax
+                you can actually understand).</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-amber-500"></div>
+              <p class="text-gray-300 leading-relaxed">Auth middleware: use <strong
+                  class="text-gray-100">NextAuth</strong> — handles sessions, OAuth providers, and JWT out of the box.
+              </p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-amber-500"></div>
+              <p class="text-gray-300 leading-relaxed">Middleware in Next.js: just create a <code
+                  class="bg-white/10 px-1.5 py-0.5 rounded text-sm text-amber-600">middleware.ts</code> file at the
+                project root — Next.js auto-detects it. No config needed.</p>
+            </div>
+          </div>
+          <div
+            class="mt-6 p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 text-sm text-gray-400 leading-relaxed">
+            <span class="text-amber-400 font-medium block mb-1">⚠ Next.js middleware limitation</span>
+            Unlike Laravel where you can have many middleware files with full flexibility, Next.js only supports <strong
+              class="text-slate-200">one <code
+                class="bg-white/10 px-1 py-0.5 rounded text-amber-600">middleware.ts</code> file</strong>. You handle
+            all middleware logic (auth checks, redirects, etc.) inside that single file with conditionals. For most use
+            cases this is totally fine.
+          </div>
+          <div class="mt-4 p-2 bg-black/20 border border-white/5">
+            <div class="text-gray-400 mb-1">// middleware.ts — at project root</div>
+            <div><span class="text-purple-600">import</span> { NextResponse } <span class="text-purple-600">from</span>
+              <span class="text-amber-600">'next/server'</span>;
+            </div>
+            <div><span class="text-purple-600">import</span> type { NextRequest } <span
+                class="text-purple-600">from</span> <span class="text-amber-600">'next/server'</span>;</div>
+            <div class="mt-2"><span class="text-purple-600">export function</span> <span
+                class="text-blue-600">middleware</span>(request: NextRequest) {</div>
+            <div class="ml-4"><span class="text-purple-600">const</span> token = request.cookies.<span
+                class="text-amber-600">get</span>(<span class="text-amber-600">'token'</span>);</div>
+            <div class="ml-4"><span class="text-purple-600">if</span> (!token) <span
+                class="text-purple-600">return</span> NextResponse.<span class="text-amber-600">redirect</span>(<span
+                class="text-amber-600">'/login'</span>);</div>
+            <div class="ml-4"><span class="text-purple-600">return</span> NextResponse.<span
+                class="text-amber-600">next</span>();</div>
+            <div>}</div>
+            <div class="mt-2"><span class="text-gray-400">// Which routes to protect</span></div>
+            <div><span class="text-purple-600">export const</span> config = {</div>
+            <div class="ml-4">matcher: [<span class="text-amber-600">'/dashboard/:path*'</span>, <span
+                class="text-amber-600">'/api/:path*'</span>],</div>
+            <div>};</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BACKEND -->
+      <div class="section" id="s-backend">
+        <!-- DDD Architecture -->
+        <div class="card rounded-2xl p-6 mb-4 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+          <div class="flex items-center gap-3 mb-6">
+            <h2 class="text-xl font-semibold text-white">Architecture: Domain-Driven Design</h2>
+            <span class="px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-300 border-indigo-500/20">DDD</span>
+          </div>
+          <div class="space-y-2">
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-purple-500"></div>
+              <p class="text-gray-300 leading-relaxed">Yes, use <strong class="text-gray-100">MVC</strong> — but I
+                prefer you go further with <strong class="text-gray-100">Domain-Driven Design</strong>. It keeps your
+                project modular and clean as it grows.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-purple-500"></div>
+              <p class="text-gray-300 leading-relaxed">Put your <strong class="text-gray-100">models</strong> in one
+                folder, your <strong class="text-gray-100">views</strong> in one folder — but for <strong
+                  class="text-gray-100">controllers</strong>, group them by domain (not by type). Each domain gets its
+                own folder with its own routes.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-purple-500"></div>
+              <p class="text-gray-300 leading-relaxed">Example: a <code
+                  class="bg-white/10 px-1.5 py-0.5 rounded text-sm text-indigo-300">Product/</code> folder contains
+                <strong class="text-gray-100">all controllers related to Product</strong> — Product as Buyer, Product
+                as Supplier, Product as Admin. You won't find a Profile controller inside the Product folder.
+              </p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-purple-500"></div>
+              <p class="text-gray-300 leading-relaxed">This way you get a <strong class="text-gray-100">modular
+                  project</strong> — if it's a collab coding project, each developer can work on their own domain folder
+                without conflicts. Way less merge issues.</p>
+            </div>
+          </div>
+          <div
+            class="mt-6 p-4 rounded-2xl bg-indigo-500/5 border border-indigo-500/10 text-sm text-gray-400 leading-relaxed">
+            <span class="text-indigo-400 font-medium block mb-1">💡 Real talk</span>
+            Sometimes you'll break the architecture — that's normal. The point is to have a <strong
+              class="text-slate-200">default structure</strong> you follow. It's about being consistent 90% of the time,
+            not 100%.
+          </div>
+        </div>
+
+        <!-- Folder Structure -->
+        <div class="card rounded-2xl p-6 mb-4">
+          <h3 class="text-lg font-semibold text-white mb-6">Suggested Folder Structure — Node.js (Fastify)</h3>
+          <div class="bg-black/20 border border-white/5">
+            <div class="text-gray-400 group"><span class="text-indigo-400">src/</span></div>
+            <div class="ml-4 text-gray-400 group">├── <span class="text-indigo-400">domains/</span> <span
+                class="text-slate-600 text-xs ml-2">// each domain is self-contained</span></div>
+            <div class="ml-8 text-gray-400 group">├── <span class="text-indigo-400">product/</span></div>
+            <div class="ml-12 text-gray-400">├── product.routes.ts <span class="text-slate-600 text-xs ml-2">// GET
+                /products, POST /products</span></div>
+            <div class="ml-12 text-gray-400">├── product.controller.ts <span class="text-slate-600 text-xs ml-2">//
+                handles request/response</span></div>
+            <div class="ml-12 text-gray-400">├── product.service.ts <span class="text-slate-600 text-xs ml-2">//
+                business logic</span></div>
+            <div class="ml-12 text-gray-400">└── product.schema.ts <span class="text-slate-600 text-xs ml-2">//
+                validation (Zod/Typebox)</span></div>
+            <div class="ml-8 text-gray-400 group">├── <span class="text-indigo-400">user/</span></div>
+            <div class="ml-12 text-gray-400">├── user.routes.ts</div>
+            <div class="ml-12 text-gray-400">├── user.controller.ts</div>
+            <div class="ml-12 text-gray-400">├── user.service.ts</div>
+            <div class="ml-12 text-gray-400">└── user.schema.ts</div>
+            <div class="ml-8 text-gray-400 group">└── <span class="text-indigo-400">order/</span></div>
+            <div class="ml-12 text-gray-400">└── ...</div>
+            <div class="ml-4 text-gray-400">├── <span class="text-gray-400">models/</span> <span
+                class="text-slate-600 text-xs ml-2">// Drizzle DB schemas (shared)</span></div>
+            <div class="ml-4 text-gray-400">├── <span class="text-gray-400">middlewares/</span> <span
+                class="text-slate-600 text-xs ml-2">// auth, rate-limit, etc.</span></div>
+            <div class="ml-4 text-gray-400">├── <span class="text-gray-400">plugins/</span> <span
+                class="text-slate-600 text-xs ml-2">// Fastify plugins (DB, Redis)</span></div>
+            <div class="ml-4 text-gray-400">├── <span class="text-gray-400">utils/</span> <span
+                class="text-slate-600 text-xs ml-2">// helpers, formatters</span></div>
+            <div class="ml-4 text-gray-400">├── app.ts <span class="text-slate-600 text-xs ml-2">// Fastify app
+                setup</span></div>
+            <div class="ml-4 text-gray-400">└── server.ts <span class="text-slate-600 text-xs ml-2">// start the
+                server</span></div>
+          </div>
+          <div
+            class="mt-4 p-4 rounded-2xl bg-indigo-500/5 border border-indigo-500/10 text-sm text-gray-400 leading-relaxed">
+            <span class="text-indigo-400 font-medium block mb-1">📁 Why this structure?</span>
+            Each domain folder is independent — you can delete or refactor a whole domain without touching others. When
+            a teammate is working on <code class="bg-white/10 px-1 py-0.5 rounded text-indigo-300">order/</code>, they
+            won't conflict with your work on <code
+              class="bg-white/10 px-1 py-0.5 rounded text-indigo-300">product/</code>.
+          </div>
+        </div>
+
+        <!-- Tech Stack & Why Node.js -->
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div class="card rounded-2xl p-6">
+            <h3 class="text-lg font-semibold text-white mb-6">Tech Stack</h3>
+            <div class="space-y-2">
+              <div
+                class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5 ring-1 ring-indigo-500/30">
+                <span class="text-gray-300 font-medium">Runtime</span>
+                <span class="text-indigo-400 font-bold">Node.js ✓</span>
+              </div>
+              <div
+                class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5 ring-1 ring-indigo-500/30">
+                <span class="text-gray-300 font-medium">Framework</span>
+                <span class="text-indigo-400 font-bold">Fastify ✓</span>
+              </div>
+              <div class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+                <span class="text-gray-400">ORM</span>
+                <span class="text-indigo-400 font-medium">Drizzle or Sqlizer</span>
+              </div>
+              <div class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+                <span class="text-gray-400">Database</span>
+                <span class="text-indigo-400 font-medium">PostgreSQL</span>
+              </div>
+              <div class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5 opacity-40">
+                <span class="text-gray-400 line-through">Skip for now</span>
+                <span class="text-red-400 font-medium line-through">Laravel / Go</span>
+              </div>
+            </div>
+            <div
+              class="mt-6 p-4 rounded-2xl bg-indigo-500/5 border border-indigo-500/10 text-sm text-gray-400 leading-relaxed">
+              <span class="text-indigo-400 font-medium block mb-1">💼 Job market reality</span>
+              Focus on <strong class="text-slate-200">React + Node.js</strong>. I'm seeing jobs nowadays listing Node.js
+              a lot more than Laravel or Go. One language (JavaScript/TypeScript) for both frontend and backend = less
+              to learn, more jobs.
+            </div>
+          </div>
+          <div class="card rounded-2xl p-6">
+            <h3 class="text-lg font-semibold text-white mb-6">Queues — When You Need Them</h3>
+            <div class="space-y-2">
+              <div class="flex gap-3">
+                <div class="dot bg-teal-500"></div>
+                <p class="text-sm text-gray-300">Queues are for <strong class="text-gray-100">long-running
+                    tasks</strong> that you don't want to block the user for — video compression, waiting for AI to
+                  respond, sending emails, processing payments.</p>
+              </div>
+              <div class="flex gap-3">
+                <div class="dot bg-teal-500"></div>
+                <p class="text-sm text-gray-300">The idea: user makes request → you <strong class="text-gray-100">push
+                    to queue</strong> → respond immediately with "processing" → a background <strong
+                    class="text-gray-100">worker</strong> handles the heavy task.</p>
+              </div>
+              <div class="flex gap-3">
+                <div class="dot bg-teal-500"></div>
+                <p class="text-sm text-gray-300">Without queues, the user stares at a loading spinner for 30 seconds
+                  while your server compresses a video. With queues, they get instant feedback.</p>
+              </div>
+            </div>
+            <div class="mt-6 p-4 rounded-2xl bg-teal-500/5 border border-teal-500/10 text-sm text-gray-400">
+              Use <strong class="text-slate-200">Redis (BullMQ)</strong> or the queue provided by Postgres. Both work
+              great with Node.js.
+            </div>
+          </div>
+
+          <!-- Monitoring & Visibility -->
+          <div class="card rounded-2xl p-6">
+            <h3 class="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                </path>
+              </svg>
+              Monitoring & Visibility
+            </h3>
+            <div class="space-y-4">
+              <div class="flex gap-3">
+                <div class="dot bg-emerald-500"></div>
+                <p class="text-sm text-gray-300">Use <strong class="text-gray-100">Hono Telescope</strong> for a
+                  real-time dashboard of your requests, performance, and server health. It's like X-ray vision for your
+                  API.</p>
+              </div>
+              <div class="flex gap-3">
+                <div class="dot bg-emerald-500"></div>
+                <p class="text-sm text-gray-300">Pair <strong class="text-gray-100">Uptrace + Pino</strong> for
+                  structured logging and distributed tracing. Uptrace gives you a clean UI to track every request from
+                  frontend to DB.</p>
+              </div>
+            </div>
+            <div
+              class="mt-6 p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/10 text-sm text-gray-400 leading-relaxed">
+              <span class="text-emerald-400 font-medium block mb-1">💡 observability is key</span>
+              Don't wait for users to complain. With this stack, you'll see errors and bottlenecks <strong
+                class="text-slate-200">before they do</strong>.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOSTING -->
+      <div class="section" id="s-hosting">
+        <!-- VPS Setup -->
+        <div class="card rounded-2xl p-6 mb-4 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+          <div class="flex items-center gap-3 mb-6">
+            <h2 class="text-xl font-semibold text-white">VPS Setup — Hetzner</h2>
+            <span
+              class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border-emerald-500/20">$5/month</span>
+          </div>
+          <div class="space-y-2">
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-blue-500"></div>
+              <p class="text-gray-300 leading-relaxed">Buy a <strong class="text-gray-100">Hetzner</strong> Ubuntu VPS
+                (~$5/mo). Best price/performance ratio out there.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-blue-500"></div>
+              <p class="text-gray-300 leading-relaxed"><strong class="text-gray-100">Use AI to help you set up the
+                  server.</strong> Tell it: "I have a Hetzner Ubuntu VPS, I want to create a new user and password, and
+                allow SSH with password." It'll give you the exact commands.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-blue-500"></div>
+              <p class="text-gray-300 leading-relaxed">You can <strong class="text-gray-100">SSH from VSCode</strong>
+                directly into the server — install the "Remote - SSH" extension and you'll be coding on the server as if
+                it's your local machine.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step-by-step Deployment -->
+        <div class="card rounded-2xl p-6 mb-4">
+          <h2 class="text-xl font-semibold text-white mb-6">Step-by-step Deployment</h2>
+          <div class="grid gap-4">
+            <!-- Step 1: UFW -->
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
+              <div class="flex items-center gap-3 mb-2">
+                <span
+                  class="flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 text-xs font-bold">1</span>
+                <h4 class="font-medium text-white text-lg">Ports (UFW)</h4>
+              </div>
+              <p class="text-gray-400 ml-9 mb-2">Learn ports using <strong class="text-slate-200">UFW</strong>
+                (Uncomplicated Firewall). When you want to host your backend, you need to <strong
+                  class="text-slate-200">open the port</strong> it runs on so the internet can access it.</p>
+              <p class="text-gray-400 ml-9">Install UFW, then <strong class="text-red-400">immediately</strong> run
+                <code class="bg-black/40 px-1.5 py-0.5 rounded text-purple-300">ufw allow 22</code> — this allows SSH.
+                If you enable UFW without this, you're locked out forever. Then open your app port: <code
+                  class="bg-black/40 px-1.5 py-0.5 rounded text-purple-300">ufw allow 3000</code> (or whatever port your
+                backend uses).
+              </p>
+            </div>
+            <!-- Step 2: Domain -->
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
+              <div class="flex items-center gap-3 mb-2">
+                <span
+                  class="flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 text-xs font-bold">2</span>
+                <h4 class="font-medium text-white text-lg">Domain Name</h4>
+              </div>
+              <p class="text-gray-400 ml-9 mb-2">Buy a domain on <strong class="text-slate-200">Namecheap</strong>.
+                Then go to <strong class="text-slate-200">Advanced DNS</strong> settings in Namecheap.</p>
+              <p class="text-gray-400 ml-9">Add an <strong class="text-slate-200">A Record</strong>: set the host to
+                <code class="bg-black/40 px-1.5 py-0.5 rounded text-purple-300">@</code> (for root domain) and put your
+                Hetzner server's <strong class="text-slate-200">IP address</strong> as the value. Now your domain points
+                to your server.
+              </p>
+            </div>
+            <!-- Step 3: Nginx -->
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
+              <div class="flex items-center gap-3 mb-2">
+                <span
+                  class="flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 text-xs font-bold">3</span>
+                <h4 class="font-medium text-white text-lg">Nginx (Reverse Proxy)</h4>
+              </div>
+              <p class="text-gray-400 ml-9 mb-2">Install Nginx and <strong class="text-slate-200">use AI to configure
+                  it</strong>. Tell AI: <em class="text-gray-300">"I have this domain name [yourdomain.com], I want to
+                  serve it over port [your port], also set the max file upload size to 1GB."</em></p>
+              <p class="text-gray-400 ml-9">Nginx sits in front of your Node.js app and routes traffic from port 80/443
+                (HTTP/HTTPS) to your internal app port (e.g. 3000).</p>
+            </div>
+            <!-- Step 4: SSL -->
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
+              <div class="flex items-center gap-3 mb-2">
+                <span
+                  class="flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 text-xs font-bold">4</span>
+                <h4 class="font-medium text-white text-lg">SSL (HTTPS)</h4>
+              </div>
+              <p class="text-gray-400 ml-9">Use <strong class="text-slate-200">Certbot</strong> (it's a Python library)
+                to get free SSL. It auto-configures Nginx for HTTPS. One command and your site is secure. Don't forget
+                to also open the port your backend uses with UFW.</p>
+            </div>
+            <!-- Step 5: PM2 -->
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
+              <div class="flex items-center gap-3 mb-2">
+                <span
+                  class="flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 text-xs font-bold">5</span>
+                <h4 class="font-medium text-white text-lg">PM2 (Keep it alive 24/7)</h4>
+              </div>
+              <p class="text-gray-400 ml-9 mb-2">Install <strong class="text-slate-200">PM2</strong> — it's a process
+                manager built for Node.js. It keeps your backend running 24/7, auto-restarts on crash.</p>
+              <p class="text-gray-400 ml-9 mb-2"><strong class="text-slate-200">Use AI here too</strong> — tell it: <em
+                  class="text-gray-300">"Generate an ecosystem.config.js for PM2, tell it my port is [your port], use
+                  fork mode (not cluster), and show me how to start it."</em></p>
+              <p class="text-gray-400 ml-9">Once running, use <code
+                  class="bg-black/40 px-1.5 py-0.5 rounded text-purple-300">pm2 status</code> to see all your running
+                processes. Use <code class="bg-black/40 px-1.5 py-0.5 rounded text-purple-300">pm2 logs</code> to debug
+                issues.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- UFW Warning -->
+        <div class="p-6 rounded-3xl bg-red-500/10 border border-red-500/20">
+          <div class="flex items-start gap-4">
+            <div class="p-2 rounded-xl bg-red-500/20 text-red-400">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                </path>
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-red-400 font-semibold mb-1">UFW Critical Warning</h4>
+              <p class="text-red-400/80 text-sm leading-relaxed">Always <code
+                  class="bg-red-500/20 font-mono px-1">ufw allow 22</code> BEFORE enabling UFW. Miss this = can't SSH
+                back in. <strong>No recovery.</strong> You'll have to reinstall the entire VPS from scratch.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI -->
+      <div class="section" id="s-ai">
+        <div class="card rounded-2xl p-6 mb-4 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+          <div class="flex items-center gap-3 mb-6">
+            <h2 class="text-xl font-semibold text-white">AI Assistants — Which & When</h2>
+            <span class="px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-300 border-indigo-500/20">preference
+              order</span>
+          </div>
+          <div class="space-y-2">
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors border border-white/5">
+              <div class="text-2xl mt-1">1️⃣</div>
+              <div>
+                <h4 class="text-white font-medium">ChatGPT</h4>
+                <p class="text-gray-400 text-sm">First choice for most tasks — logic, explanations, debugging, and
+                  generating code snippets. Most reliable all-rounder.</p>
+              </div>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors border border-white/5">
+              <div class="text-2xl mt-1">2️⃣</div>
+              <div>
+                <h4 class="text-white font-medium">Gemini</h4>
+                <p class="text-gray-400 text-sm">Good for long context and large codebases. Integrates well with Google
+                  ecosystem.</p>
+              </div>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors border border-white/5">
+              <div class="text-2xl mt-1">3️⃣</div>
+              <div>
+                <h4 class="text-white font-medium">Claude</h4>
+                <p class="text-gray-400 text-sm">Strong for reasoning, code review, and understanding complex patterns.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="mt-6 p-4 rounded-2xl bg-cyan-500/5 border border-cyan-500/10 text-sm text-gray-400 leading-relaxed">
+            <span class="text-cyan-400 font-medium block mb-1">💡 Use the free versions</span>
+            They're all good enough for learning. No need to pay at the start. Use them to help you with <strong
+              class="text-slate-200">server setup, Nginx config, PM2 config</strong> — just describe what you have and
+            what you want, and they'll give you the commands.
+          </div>
+        </div>
+
+        <div class="card rounded-2xl p-6 mb-4">
+          <div class="flex items-center gap-3 mb-6">
+            <h2 class="text-xl font-semibold text-white">Agentic Coding Tools</h2>
+            <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border-emerald-500/20">power
+              move</span>
+          </div>
+          <p class="text-gray-400 mb-6 leading-relaxed">These are AI tools that work <strong
+              class="text-slate-200">directly inside your codebase</strong> — they read your files, understand your
+            project structure, and edit code for you. Way better than copy-pasting code into a chat window.</p>
+          <div class="grid gap-6">
+            <div class="p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-emerald-500/20 transition-colors">
+              <div class="flex gap-4">
+                <div class="dot bg-emerald-500"></div>
+                <div>
+                  <h4 class="text-gray-100 font-medium mb-2">Kilo CLI</h4>
+                  <p class="text-gray-400 text-sm leading-relaxed mb-2">Terminal-based AI agent. Install it, then from
+                    your project folder run <code class="bg-black/40 px-1 py-0.5 rounded text-emerald-600">kilo .</code>
+                    — the dot means "open Kilo in this project".</p>
+                  <p class="text-gray-400 text-sm leading-relaxed">Then type <code
+                      class="bg-black/40 px-1 py-0.5 rounded text-emerald-600">/connect</code>, search for OpenAI, and
+                    use your ChatGPT account — it'll let you use <strong class="text-slate-200">Codex</strong> for free.
+                    AI edits your files directly.</p>
+                </div>
+              </div>
+            </div>
+            <div class="p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-emerald-500/20 transition-colors">
+              <div class="flex gap-4">
+                <div class="dot bg-emerald-500"></div>
+                <div>
+                  <h4 class="text-gray-100 font-medium mb-2">OpenCode</h4>
+                  <p class="text-gray-400 text-sm leading-relaxed">Another terminal-based tool, similar to Kilo.
+                    Install it and use it inside your project. Good alternative if Kilo doesn't work for your setup.</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-emerald-500/20 transition-colors ring-1 ring-emerald-500/20">
+              <div class="flex gap-4">
+                <div class="dot bg-emerald-500"></div>
+                <div>
+                  <h4 class="text-gray-100 font-medium mb-2">Antigravity IDE <span
+                      class="text-emerald-400 text-xs font-normal ml-2">★ recommended</span></h4>
+                  <p class="text-gray-400 text-sm leading-relaxed">A full code editor (like VSCode) with <strong
+                      class="text-slate-200">AI built directly into the IDE</strong>. It has full context of your
+                    project — best experience for AI-assisted coding.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GIT & DB -->
+      <div class="section" id="s-git">
+        <div class="card rounded-2xl p-6 mb-4">
+          <h2 class="text-xl font-semibold text-white mb-6">Git Fundamentals</h2>
+          <div class="space-y-2">
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-blue-500"></div>
+              <p class="text-gray-300 leading-relaxed"><code
+                  class="bg-black/40 px-1.5 py-0.5 rounded text-blue-600">init</code>, <code
+                  class="bg-black/40 px-1.5 py-0.5 rounded text-blue-600">add</code>, <code
+                  class="bg-black/40 px-1.5 py-0.5 rounded text-blue-600">commit</code>, <code
+                  class="bg-black/40 px-1.5 py-0.5 rounded text-blue-600">push</code>, <code
+                  class="bg-black/40 px-1.5 py-0.5 rounded text-blue-600">pull</code> — daily workflow.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-blue-500"></div>
+              <p class="text-gray-300 leading-relaxed"><strong class="text-gray-100">Branches</strong>: never push
+                directly to main. Use <code
+                  class="bg-black/40 px-1.5 py-0.5 rounded text-blue-600">feat/feature-name</code>.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-blue-500"></div>
+              <p class="text-gray-300 leading-relaxed"><strong class="text-gray-100">.gitignore</strong>: always
+                ignore node_modules/, .env, and build folders.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="card rounded-2xl p-6">
+            <h3 class="text-lg font-semibold text-white mb-6">Database Choices</h3>
+            <div class="space-y-2">
+              <div class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+                <span class="text-gray-400">Default</span>
+                <span class="text-blue-400 font-medium font-mono text-sm">PostgreSQL</span>
+              </div>
+              <div class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+                <span class="text-gray-400">ORM</span>
+                <span class="text-blue-400 font-medium font-mono text-sm">Drizzle</span>
+              </div>
+              <div class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+                <span class="text-gray-400">Cache</span>
+                <span class="text-blue-400 font-medium font-mono text-sm">Redis</span>
+              </div>
+            </div>
+          </div>
+          <div class="card rounded-2xl p-6">
+            <h3 class="text-lg font-semibold text-white mb-6">Why Drizzle?</h3>
+            <div class="space-y-3">
+              <div class="flex gap-3">
+                <div class="dot bg-emerald-400 mt-1.5"></div>
+                <p class="text-sm text-gray-300">Lighter bundle, faster queries than Prisma.</p>
+              </div>
+              <div class="flex gap-3">
+                <div class="dot bg-emerald-400 mt-1.5"></div>
+                <p class="text-sm text-gray-300">SQL-like syntax — you understand what's happening.</p>
+              </div>
+              <div class="flex gap-3">
+                <div class="dot bg-emerald-400 mt-1.5"></div>
+                <p class="text-sm text-gray-300">Perfect for Node.js and Next.js Edge.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- PROJECTS -->
+      <div class="section" id="s-projects">
+
+        <!-- Intro -->
+        <div class="card rounded-2xl p-6 mb-4 border-purple-500/20 bg-gradient-to-br from-[#1a1a19] to-[#141413]">
+          <h2 class="text-xl font-semibold text-white mb-2">Build These Projects</h2>
+          <p class="text-gray-400 text-sm leading-relaxed">The best way to learn is by building. Here are 4 projects
+            ordered by difficulty — each one teaches you something new. Follow the steps in order, and don't skip ahead.
+          </p>
+        </div>
+
+        <!-- Project 1: Todo App -->
+        <div class="card rounded-2xl p-6 mb-4 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+          <div class="flex items-center gap-3 mb-2">
+            <span
+              class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold">1</span>
+            <h3 class="text-lg font-semibold text-white">Task Manager App</h3>
+            <span
+              class="px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-300 border-blue-500/20 text-xs">beginner</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-4 ml-11">A full CRUD app with auth. This covers 80% of what real apps need.
+            You'll learn the entire flow from UI to database to deployment.</p>
+          <div class="space-y-1 ml-11">
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                1</span>
+              <p class="text-sm text-gray-300">Run <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-blue-400">npx create-next-app@latest</code> with
+                TypeScript enabled. Install <strong class="text-gray-100">Tailwind CSS</strong> and <strong
+                  class="text-gray-100">shadcn/ui</strong> for your component library. This is your project skeleton.
+              </p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                2</span>
+              <p class="text-sm text-gray-300">Build the <strong class="text-gray-100">UI first</strong> with no backend
+                — create a task list component, an "add task" form with shadcn Input + Button, an edit modal using
+                shadcn Dialog, and a delete confirmation. Use hardcoded dummy data for now.</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                3</span>
+              <p class="text-sm text-gray-300">Install <strong class="text-gray-100">PostgreSQL</strong> locally (or use
+                a free Neon/Supabase DB). Set up <strong class="text-gray-100">Drizzle ORM</strong> — define a <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-blue-400">tasks</code> table with columns: id, title,
+                description, status (todo/done), userId, createdAt. Run your first migration.</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                4</span>
+              <p class="text-sm text-gray-300">Create <strong class="text-gray-100">Next.js API routes</strong> inside
+                <code class="bg-white/10 px-1 py-0.5 rounded text-blue-400">app/api/tasks/</code> — implement GET (list
+                all), POST (create), PUT (update status/title), DELETE (remove). Connect each route to Drizzle queries.
+                Test with Postman or Thunder Client.
+              </p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                5</span>
+              <p class="text-sm text-gray-300">Add <strong class="text-gray-100">NextAuth.js</strong> — set up Google
+                and/or GitHub OAuth providers. Create a <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-blue-400">middleware.ts</code> to protect all <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-blue-400">/dashboard</code> routes. Only show tasks that
+                belong to the logged-in user.</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                6</span>
+              <p class="text-sm text-gray-300">Add <strong class="text-gray-100">Zod validation</strong> on every API
+                route — validate title length (min 1, max 100), status must be "todo" or "done", userId must match
+                session. Never trust client input. Return proper error messages.</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                7</span>
+              <p class="text-sm text-gray-300"><strong class="text-gray-100">Deploy to Hetzner VPS</strong> — set up
+                Ubuntu server, install Node.js, clone your repo with Git, configure Nginx as reverse proxy, get SSL with
+                Certbot, run your app with PM2. Your first live app on the internet 🎉</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Password Manager -->
+        <div class="card rounded-2xl p-6 mb-4 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+          <div class="flex items-center gap-3 mb-2">
+            <span
+              class="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold">2</span>
+            <h3 class="text-lg font-semibold text-white">Password Manager</h3>
+            <span
+              class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border-emerald-500/20 text-xs">beginner+</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-4 ml-11">A secure vault for passwords. This teaches you encryption,
+            master-password auth, clipboard APIs, and how to think about security from day one.</p>
+          <div class="space-y-1 ml-11">
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span
+                class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                1</span>
+              <p class="text-sm text-gray-300">Set up <strong class="text-gray-100">Next.js + Drizzle +
+                  PostgreSQL</strong>. Design the DB schema: a <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-emerald-400">vaults</code> table (id, userId,
+                masterPasswordHash) and a <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-emerald-400">credentials</code> table (id, vaultId,
+                siteName, siteUrl, username, encryptedPassword, createdAt).</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span
+                class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                2</span>
+              <p class="text-sm text-gray-300">Implement <strong class="text-gray-100">master password</strong> flow —
+                on first login, the user creates a master password. Hash it with <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-emerald-400">bcrypt</code> and store the hash. Every
+                session requires re-entering it. Never store the raw password.</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span
+                class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                3</span>
+              <p class="text-sm text-gray-300">Learn <strong class="text-gray-100">AES-256 encryption</strong> — use the
+                master password to derive an encryption key (with <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-emerald-400">crypto.pbkdf2</code>). Encrypt each password
+                before saving to DB, decrypt on read. The server never sees plaintext passwords.</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span
+                class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                4</span>
+              <p class="text-sm text-gray-300">Build the <strong class="text-gray-100">vault UI</strong> — a searchable
+                list of saved credentials with site name, username (visible), and password (hidden by default). Add a
+                "copy password" button that uses <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-emerald-400">navigator.clipboard.writeText()</code>.</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span
+                class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                5</span>
+              <p class="text-sm text-gray-300">Add a <strong class="text-gray-100">password generator</strong> — let
+                users generate random passwords with options for length, uppercase, lowercase, numbers, symbols. Show a
+                strength indicator (weak/medium/strong).</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span
+                class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                6</span>
+              <p class="text-sm text-gray-300">Add <strong class="text-gray-100">auto-lock</strong> — after 5 minutes of
+                inactivity, clear the decryption key from memory and force re-entering the master password. Use <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-emerald-400">setTimeout</code> with activity listeners.
+              </p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span
+                class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                7</span>
+              <p class="text-sm text-gray-300">Add <strong class="text-gray-100">Zod validation</strong> on all inputs +
+                <strong class="text-gray-100">rate limiting</strong> on the master password endpoint (max 5 attempts per
+                minute). This prevents brute-force attacks.
+              </p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span
+                class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                8</span>
+              <p class="text-sm text-gray-300"><strong class="text-gray-100">Deploy securely</strong> — Hetzner VPS with
+                Nginx + SSL (HTTPS is mandatory for a password app). Set secure HTTP headers, enable HSTS, and use PM2
+                to keep it running 24/7.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: E-Commerce Store -->
+        <div class="card rounded-2xl p-6 mb-4 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+          <div class="flex items-center gap-3 mb-2">
+            <span
+              class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold">3</span>
+            <h3 class="text-lg font-semibold text-white">E-Commerce Store</h3>
+            <span
+              class="px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-300 border-amber-500/20 text-xs">intermediate</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-4 ml-11">A real store with products, cart, checkout, and payment. This
+            teaches you how money flows in apps, how to handle orders, and how to build admin tools.</p>
+          <div class="space-y-1 ml-11">
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                1</span>
+              <p class="text-sm text-gray-300">Design the <strong class="text-gray-100">DB schema</strong> in Drizzle —
+                <code class="bg-white/10 px-1 py-0.5 rounded text-amber-400">products</code> (id, name, price, image,
+                stock, categoryId), <code class="bg-white/10 px-1 py-0.5 rounded text-amber-400">orders</code> (id,
+                userId, total, status), <code class="bg-white/10 px-1 py-0.5 rounded text-amber-400">order_items</code>
+                (orderId, productId, qty, price). Think about relationships.
+              </p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                2</span>
+              <p class="text-sm text-gray-300">Build the <strong class="text-gray-100">product listing page</strong> —
+                responsive grid with product cards (image, name, price, "Add to Cart" button). Add category filters and
+                a search bar. Use <strong class="text-gray-100">Zustand</strong> to manage the cart state across pages.
+              </p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                3</span>
+              <p class="text-sm text-gray-300">Create a centralized <strong class="text-gray-100">Axios API
+                  layer</strong> in <code class="bg-white/10 px-1 py-0.5 rounded text-amber-400">lib/api.ts</code> —
+                auto-attach Bearer token from localStorage, set baseURL, handle 401 errors globally (redirect to login).
+                Every component uses this, never raw fetch().</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                4</span>
+              <p class="text-sm text-gray-300">Build the <strong class="text-gray-100">checkout flow</strong> as a
+                multi-step form — Step 1: cart summary with quantity controls. Step 2: shipping address form with Zod
+                validation. Step 3: order review + "Place Order" button that creates the order in DB.</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                5</span>
+              <p class="text-sm text-gray-300">Integrate <strong class="text-gray-100">Stripe</strong> for payment — use
+                Stripe Checkout (hosted page) for simplicity. Create a <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-amber-400">/api/checkout</code> route that creates a
+                Stripe session. Handle the <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-amber-400">checkout.session.completed</code> webhook to
+                mark orders as paid.</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                6</span>
+              <p class="text-sm text-gray-300">Build <strong class="text-gray-100">order tracking</strong> — create an
+                orders page showing all user orders with status badges (pending → paid → shipped → delivered). Use
+                colored badges from shadcn. Add real-time status updates if you want to get fancy.</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                7</span>
+              <p class="text-sm text-gray-300">Build an <strong class="text-gray-100">admin dashboard</strong> —
+                separate <code class="bg-white/10 px-1 py-0.5 rounded text-amber-400">/admin</code> routes protected by
+                role-check middleware. Features: add/edit/delete products, view all orders, update order status, see
+                total revenue.</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                8</span>
+              <p class="text-sm text-gray-300"><strong class="text-gray-100">Deploy with DDD structure</strong> —
+                organize your backend into domain folders: <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-amber-400">product/</code>, <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-amber-400">order/</code>, <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-amber-400">user/</code>. Each domain has its own routes,
+                controller, service, and schema. Deploy to Hetzner.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: SaaS Platform -->
+        <div class="card rounded-2xl p-6 mb-4 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+          <div class="flex items-center gap-3 mb-2">
+            <span
+              class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold">4</span>
+            <h3 class="text-lg font-semibold text-white">SaaS App with Subscriptions</h3>
+            <span
+              class="px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-300 border-purple-500/20 text-xs">advanced</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-4 ml-11">A multi-user platform with billing, dashboards, and background
+            jobs. This is what real startups build. If you can build this, you can build anything.</p>
+          <div class="space-y-1 ml-11">
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                1</span>
+              <p class="text-sm text-gray-300">Build a <strong class="text-gray-100">landing page</strong> that sells —
+                hero section with a clear value prop, feature grid with icons, a pricing table (Free / Pro / Business
+                tiers), FAQ accordion, and a sign-up CTA. Make it look like a real product.</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                2</span>
+              <p class="text-sm text-gray-300">Set up <strong class="text-gray-100">multi-tenant auth</strong> — users
+                register, then create or join an organization. DB schema: <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-purple-400">users</code>, <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-purple-400">organizations</code>, <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-purple-400">memberships</code> (userId, orgId, role). Each
+                org has its own data.</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                3</span>
+              <p class="text-sm text-gray-300">Integrate <strong class="text-gray-100">Stripe Subscriptions</strong> —
+                create products + prices in Stripe Dashboard. Use Stripe Checkout for subscribing. Handle webhooks:
+                <code class="bg-white/10 px-1 py-0.5 rounded text-purple-400">customer.subscription.created</code>,
+                <code class="bg-white/10 px-1 py-0.5 rounded text-purple-400">.updated</code>, <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-purple-400">.deleted</code> to sync plan status to your
+                DB.
+              </p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                4</span>
+              <p class="text-sm text-gray-300">Build a <strong class="text-gray-100">user dashboard</strong> — show
+                current plan, usage metrics (API calls, storage used), billing history from Stripe, and a "Manage
+                Subscription" button that opens Stripe's Customer Portal.</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                5</span>
+              <p class="text-sm text-gray-300">Add <strong class="text-gray-100">background jobs</strong> with BullMQ +
+                Redis — create a job queue for email sending (welcome, invoice, password reset), weekly report
+                generation (aggregate data into PDF), and any AI processing tasks. Show job status in the UI.</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                6</span>
+              <p class="text-sm text-gray-300">Add <strong class="text-gray-100">Hono Telescope + Uptrace +
+                  Pino</strong> — Telescope gives you a real-time request dashboard. Pino handles structured JSON
+                logging. Uptrace collects traces so you can see the full lifecycle of every request from API to DB and
+                back.</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                7</span>
+              <p class="text-sm text-gray-300">Implement <strong class="text-gray-100">role-based access control
+                  (RBAC)</strong> — define roles: owner, admin, member, viewer. Create a middleware that checks the
+                user's role in the current org before allowing actions. Owners can delete orgs, admins manage members,
+                viewers can only read.</p>
+            </div>
+            <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
+              <span class="text-xs font-mono text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
+                8</span>
+              <p class="text-sm text-gray-300"><strong class="text-gray-100">Full production deploy</strong> — Hetzner
+                VPS with Nginx, SSL, PM2 for the app, Redis for queues + caching, PostgreSQL for data. Set up <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-purple-400">pm2 ecosystem.config.js</code> with both your
+                API server and queue worker processes. You now have a production SaaS </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script>
+    function show(id) {
+      // Update tabs
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+
+      // Update sections
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById('s-' + id).classList.add('active');
+
+      // Scroll to top of content
+      window.scrollTo({ top: 300, behavior: 'smooth' });
+    }
+  </script>
+</body>
+
+</html>
