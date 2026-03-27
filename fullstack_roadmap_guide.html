@@ -71,6 +71,69 @@
     code {
       font-family: 'JetBrains Mono', 'Menlo', monospace;
     }
+
+    /* Checkbox styles */
+    .roadmap-check {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      border: 2px solid #40403d;
+      border-radius: 5px;
+      background: transparent;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 5px;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .roadmap-check:hover {
+      border-color: #a78bfa;
+      box-shadow: 0 0 8px rgba(167, 139, 250, 0.15);
+    }
+
+    .roadmap-check:checked {
+      background: #a78bfa;
+      border-color: #a78bfa;
+      box-shadow: 0 0 10px rgba(167, 139, 250, 0.25);
+    }
+
+    .roadmap-check:checked::after {
+      content: '\2713';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 12px;
+      color: white;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .check-dimmed {
+      opacity: 0.35 !important;
+      transition: opacity 0.3s ease;
+    }
+
+    .progress-track {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: #1a1a19;
+      z-index: 100;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #a78bfa, #34d399);
+      transition: width 0.4s ease;
+      border-radius: 0 2px 2px 0;
+      width: 0%;
+    }
   </style>
 </head>
 
@@ -80,8 +143,15 @@
       <h1 class="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-2">
         Fullstack Roadmap Guide
       </h1>
-      <p class="text-gray-400 text-base max-w-xl mx-auto">A practical, opinionated roadmap from someone who's been
+      <p class="text-gray-400 text-base max-w-xl mx-auto mb-3">A practical, opinionated roadmap from someone who's been
         through it. No fluff, just what actually works.</p>
+      <div class="flex items-center justify-center gap-3">
+        <span class="text-xs text-gray-500 uppercase tracking-widest">Progress</span>
+        <div class="w-32 h-1.5 rounded-full bg-white/5 overflow-hidden">
+          <div id="header-progress" class="h-full rounded-full bg-gradient-to-r from-purple-500 to-emerald-400 transition-all duration-500" style="width:0%"></div>
+        </div>
+        <span id="progress-counter" class="text-xs font-mono text-gray-500">0/0</span>
+      </div>
     </header>
 
     <nav class="flex flex-wrap justify-center gap-1 mb-8 p-1 bg-[#1a1a19]/50 rounded-xl border border-[#262624]">
@@ -1361,23 +1431,114 @@
 
   </div>
 
+  <!-- Progress bar -->
+  <div class="progress-track"><div class="progress-fill" id="global-progress"></div></div>
+
   <script>
+    // Tab navigation
     function show(id) {
-      // Update tabs
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       event.target.classList.add('active');
-
-      // Update sections
-      document.querySelectorAll('.section').forEach(section => {
-        section.classList.remove('active');
-      });
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.getElementById('s-' + id).classList.add('active');
-
-      // Scroll to top of content
       window.scrollTo({ top: 300, behavior: 'smooth' });
     }
+
+    // Checkbox system
+    (function () {
+      const KEY = 'roadmap-progress-v2';
+      const load = () => { try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch { return {}; } };
+      const save = (s) => localStorage.setItem(KEY, JSON.stringify(s));
+      let state = load();
+
+      function updateProgress() {
+        const all = document.querySelectorAll('.roadmap-check');
+        const done = document.querySelectorAll('.roadmap-check:checked').length;
+        const pct = all.length ? (done / all.length) * 100 : 0;
+        const bar = document.getElementById('global-progress');
+        const headerBar = document.getElementById('header-progress');
+        const counter = document.getElementById('progress-counter');
+        if (bar) bar.style.width = pct + '%';
+        if (headerBar) headerBar.style.width = pct + '%';
+        if (counter) counter.textContent = done + '/' + all.length;
+      }
+
+      function makeCheckbox(id) {
+        const cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.className = 'roadmap-check';
+        cb.dataset.rid = id;
+        cb.checked = !!state[id];
+        cb.addEventListener('change', function () {
+          state = load();
+          if (this.checked) state[this.dataset.rid] = true;
+          else delete state[this.dataset.rid];
+          save(state);
+          applyDim(this);
+          updateProgress();
+        });
+        return cb;
+      }
+
+      function applyDim(cb) {
+        const row = cb.closest('.flex');
+        if (!row) return;
+        row.querySelectorAll(':scope > p, :scope > div:not(:first-child)').forEach(el => {
+          el.classList.toggle('check-dimmed', cb.checked);
+        });
+      }
+
+      // 1) Replace .dot bullets with checkboxes
+      let di = 0;
+      document.querySelectorAll('.dot').forEach(dot => {
+        const sec = dot.closest('[id]');
+        const id = 'd-' + (sec ? sec.id : 'x') + '-' + (di++);
+        const cb = makeCheckbox(id);
+        dot.replaceWith(cb);
+        if (cb.checked) applyDim(cb);
+      });
+
+      // 2) Project step items
+      let si = 0;
+      document.querySelectorAll('#s-projects .flex.items-start').forEach(row => {
+        const span = row.querySelector('span');
+        if (!span || !span.textContent.trim().startsWith('Step')) return;
+        const id = 'ps-' + (si++);
+        const cb = makeCheckbox(id);
+        cb.style.marginTop = '3px';
+        row.insertBefore(cb, row.firstChild);
+        if (cb.checked) {
+          const p = row.querySelector('p');
+          if (p) p.classList.add('check-dimmed');
+        }
+        cb.addEventListener('change', function () {
+          const p = row.querySelector('p');
+          if (p) p.classList.toggle('check-dimmed', this.checked);
+        });
+      });
+
+      // 3) Hosting deployment steps
+      let hi = 0;
+      document.querySelectorAll('#s-hosting .grid.gap-4 > div').forEach(card => {
+        const header = card.querySelector('.flex.items-center');
+        if (!header || !header.querySelector('.rounded-full')) return;
+        const id = 'hs-' + (hi++);
+        const cb = makeCheckbox(id);
+        cb.style.marginTop = '0';
+        cb.style.alignSelf = 'center';
+        header.insertBefore(cb, header.firstChild);
+        if (cb.checked) {
+          card.querySelectorAll('p').forEach(p => p.classList.add('check-dimmed'));
+          header.querySelector('h4').classList.add('check-dimmed');
+        }
+        cb.addEventListener('change', function () {
+          card.querySelectorAll('p').forEach(p => p.classList.toggle('check-dimmed', this.checked));
+          header.querySelector('h4').classList.toggle('check-dimmed', this.checked);
+        });
+      });
+
+      updateProgress();
+    })();
   </script>
 </body>
 
