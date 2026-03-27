@@ -124,6 +124,9 @@
             <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
               <span class="text-sm font-medium text-gray-200">Drizzle</span>
             </div>
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 ring-1 ring-emerald-500/30">
+              <span class="text-sm font-medium text-emerald-300">Supabase</span>
+            </div>
           </div>
         </div>
 
@@ -419,12 +422,6 @@
             </div>
             <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
               <div class="dot bg-amber-500"></div>
-              <p class="text-gray-300 leading-relaxed">Auth middleware: use <strong
-                  class="text-gray-100">NextAuth</strong> — handles sessions, OAuth providers, and JWT out of the box.
-              </p>
-            </div>
-            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
-              <div class="dot bg-amber-500"></div>
               <p class="text-gray-300 leading-relaxed">Middleware in Next.js: just create a <code
                   class="bg-white/10 px-1.5 py-0.5 rounded text-sm text-amber-600">middleware.ts</code> file at the
                 project root — Next.js auto-detects it. No config needed.</p>
@@ -461,6 +458,63 @@
             <div class="ml-4">matcher: [<span class="text-amber-600">'/dashboard/:path*'</span>, <span
                 class="text-amber-600">'/api/:path*'</span>],</div>
             <div>};</div>
+          </div>
+        </div>
+
+        <!-- Supabase Auth & DB -->
+        <div class="card rounded-2xl p-6 mb-4 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+          <div class="flex items-center gap-3 mb-6">
+            <h2 class="text-xl font-semibold text-white">Supabase — Auth + Database in one</h2>
+            <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border-emerald-500/20">recommended</span>
+          </div>
+          <div class="space-y-2">
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.3)]"></div>
+              <p class="text-gray-300 leading-relaxed"><strong class="text-gray-100">Use Supabase for auth</strong> — it gives you Google, GitHub, email/password login <strong class="text-gray-100">out of the box</strong>. No need to set up NextAuth or write auth logic from scratch. One <code class="bg-white/10 px-1.5 py-0.5 rounded text-sm text-emerald-600">supabase.auth.signInWithOAuth()</code> call and you're done.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+              <p class="text-gray-300 leading-relaxed"><strong class="text-gray-100">Use Supabase for your database</strong> — it's a hosted PostgreSQL instance with a beautiful dashboard. You get a real Postgres DB, but without the pain of setting it up yourself. Create tables, add columns, set up relations — all from the UI or with SQL.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-emerald-500"></div>
+              <p class="text-gray-300 leading-relaxed"><strong class="text-gray-100">Row Level Security (RLS)</strong> — Supabase lets you write security rules directly on the database. Example: "users can only read their own rows." This means even if your API has a bug, the data is still protected at the DB level.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-emerald-500"></div>
+              <p class="text-gray-300 leading-relaxed"><strong class="text-gray-100">Free tier is generous</strong> — 500MB database, 50,000 monthly active users for auth, 1GB file storage. More than enough to build and launch real projects without paying a cent.</p>
+            </div>
+            <div class="flex gap-4 p-4 py-2 rounded-2xl hover:bg-white/5 transition-colors">
+              <div class="dot bg-emerald-500"></div>
+              <p class="text-gray-300 leading-relaxed">You can still use <strong class="text-gray-100">Drizzle ORM</strong> with Supabase — just point Drizzle's connection string to your Supabase Postgres URL. Best of both worlds: Supabase for hosting + auth, Drizzle for type-safe queries.</p>
+            </div>
+          </div>
+          <div class="mt-6 p-2 bg-black/20 border border-white/5">
+            <div class="text-gray-400 mb-1">// lib/supabase.ts — setup once</div>
+            <div><span class="text-purple-600">import</span> { createClient } <span class="text-purple-600">from</span> <span class="text-amber-600">'@supabase/supabase-js'</span>;</div>
+            <div class="mt-2"><span class="text-purple-600">export const</span> supabase = <span class="text-amber-600">createClient</span>(</div>
+            <div class="ml-4">process.env.<span class="text-amber-600">NEXT_PUBLIC_SUPABASE_URL</span>!,</div>
+            <div class="ml-4">process.env.<span class="text-amber-600">NEXT_PUBLIC_SUPABASE_ANON_KEY</span>!</div>
+            <div>);</div>
+            <div class="mt-3 text-gray-400">// Sign in with Google — one line</div>
+            <div><span class="text-purple-600">await</span> supabase.auth.<span class="text-amber-600">signInWithOAuth</span>({</div>
+            <div class="ml-4">provider: <span class="text-amber-600">'google'</span></div>
+            <div>});</div>
+            <div class="mt-3 text-gray-400">// Get current user</div>
+            <div><span class="text-purple-600">const</span> { data: { user } } = <span class="text-purple-600">await</span> supabase.auth.<span class="text-amber-600">getUser</span>();</div>
+            <div class="mt-3 text-gray-400">// Query your DB (or use Drizzle instead)</div>
+            <div><span class="text-purple-600">const</span> { data } = <span class="text-purple-600">await</span> supabase.<span class="text-amber-600">from</span>(<span class="text-amber-600">'tasks'</span>).<span class="text-amber-600">select</span>(<span class="text-amber-600">'*'</span>);</div>
+          </div>
+          <div class="mt-4 grid md:grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/10 text-sm text-gray-400 leading-relaxed">
+              <span class="text-emerald-400 font-medium block mb-1">✅ Use Supabase when</span>
+              Starting a new project, need auth fast, want a hosted DB without server setup, building with Next.js, or prototyping an MVP.
+            </div>
+            <div class="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 text-sm text-gray-400 leading-relaxed">
+              <span class="text-amber-400 font-medium block mb-1">⚠ Use your own DB when</span>
+              You need full control (custom VPS), you're building a standalone backend with Fastify, or you want to learn raw PostgreSQL setup for experience.
+            </div>
           </div>
         </div>
       </div>
@@ -577,9 +631,13 @@
                 <span class="text-gray-400">ORM</span>
                 <span class="text-indigo-400 font-medium">Drizzle or Sqlizer</span>
               </div>
+              <div class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5 ring-1 ring-emerald-500/30">
+                <span class="text-gray-300 font-medium">Database + Auth</span>
+                <span class="text-emerald-400 font-bold">Supabase ✓</span>
+              </div>
               <div class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5">
-                <span class="text-gray-400">Database</span>
-                <span class="text-indigo-400 font-medium">PostgreSQL</span>
+                <span class="text-gray-400">DB Engine</span>
+                <span class="text-indigo-400 font-medium">PostgreSQL (via Supabase)</span>
               </div>
               <div class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5 opacity-40">
                 <span class="text-gray-400 line-through">Skip for now</span>
@@ -916,8 +974,12 @@
           <div class="card rounded-2xl p-6">
             <h3 class="text-lg font-semibold text-white mb-6">Database Choices</h3>
             <div class="space-y-2">
+              <div class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5 ring-1 ring-emerald-500/30">
+                <span class="text-gray-300 font-medium">Hosted DB + Auth</span>
+                <span class="text-emerald-400 font-bold font-mono text-sm">Supabase ✓</span>
+              </div>
               <div class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5">
-                <span class="text-gray-400">Default</span>
+                <span class="text-gray-400">DB Engine</span>
                 <span class="text-blue-400 font-medium font-mono text-sm">PostgreSQL</span>
               </div>
               <div class="flex justify-between p-3 rounded-xl bg-white/5 border border-white/5">
@@ -929,21 +991,29 @@
                 <span class="text-blue-400 font-medium font-mono text-sm">Redis</span>
               </div>
             </div>
+            <div class="mt-4 p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/10 text-sm text-gray-400 leading-relaxed">
+              <span class="text-emerald-400 font-medium block mb-1">💡 Supabase = PostgreSQL</span>
+              Supabase <strong class="text-slate-200">is</strong> PostgreSQL — it's not a different database. It's a hosted Postgres with a dashboard, auth system, and storage built on top. Everything you learn in Supabase applies to raw PostgreSQL.
+            </div>
           </div>
           <div class="card rounded-2xl p-6">
-            <h3 class="text-lg font-semibold text-white mb-6">Why Drizzle?</h3>
+            <h3 class="text-lg font-semibold text-white mb-6">Why Supabase + Drizzle?</h3>
             <div class="space-y-3">
               <div class="flex gap-3">
                 <div class="dot bg-emerald-400 mt-1.5"></div>
-                <p class="text-sm text-gray-300">Lighter bundle, faster queries than Prisma.</p>
+                <p class="text-sm text-gray-300"><strong class="text-gray-100">Supabase</strong> handles hosting, auth, storage, and gives you a real Postgres URL.</p>
               </div>
               <div class="flex gap-3">
                 <div class="dot bg-emerald-400 mt-1.5"></div>
-                <p class="text-sm text-gray-300">SQL-like syntax — you understand what's happening.</p>
+                <p class="text-sm text-gray-300"><strong class="text-gray-100">Drizzle</strong> connects to that URL and gives you type-safe, SQL-like queries. Lighter and faster than Prisma.</p>
               </div>
               <div class="flex gap-3">
                 <div class="dot bg-emerald-400 mt-1.5"></div>
-                <p class="text-sm text-gray-300">Perfect for Node.js and Next.js Edge.</p>
+                <p class="text-sm text-gray-300"><strong class="text-gray-100">Auth is built-in</strong> — Supabase Auth gives you Google, GitHub, email/password, magic links. No need to build auth from scratch.</p>
+              </div>
+              <div class="flex gap-3">
+                <div class="dot bg-emerald-400 mt-1.5"></div>
+                <p class="text-sm text-gray-300"><strong class="text-gray-100">RLS (Row Level Security)</strong> — write DB-level rules like "users can only see their own data." Extra layer of protection even if your API code has bugs.</p>
               </div>
             </div>
           </div>
@@ -1009,11 +1079,11 @@
             <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
               <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
                 5</span>
-              <p class="text-sm text-gray-300">Add <strong class="text-gray-100">NextAuth.js</strong> — set up Google
-                and/or GitHub OAuth providers. Create a <code
-                  class="bg-white/10 px-1 py-0.5 rounded text-blue-400">middleware.ts</code> to protect all <code
-                  class="bg-white/10 px-1 py-0.5 rounded text-blue-400">/dashboard</code> routes. Only show tasks that
-                belong to the logged-in user.</p>
+              <p class="text-sm text-gray-300">Add <strong class="text-gray-100">Supabase Auth</strong> — set up Google
+                and/or GitHub OAuth with <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-blue-400">supabase.auth.signInWithOAuth()</code>. Use Supabase's <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-blue-400">middleware.ts</code> helper to protect all <code
+                  class="bg-white/10 px-1 py-0.5 rounded text-blue-400">/dashboard</code> routes. Enable RLS so users only see their own tasks.</p>
             </div>
             <div class="flex items-start gap-3 p-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
               <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded mt-0.5 shrink-0">Step
